@@ -30,5 +30,6 @@
     <string name="title_section2">Sobre</string>
     <string name="title_section3">Sair</string>
     <string name="title_activity_galeria">Galeria de Cifras</string>
+    <string name="title_activity_clinica_maps">Mapa de Clinicas</string>
 
 </resources>

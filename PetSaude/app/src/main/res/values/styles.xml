@@ -3,7 +3,6 @@
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="android:actionBarStyle" tools:targetApi="11">@style/MyActionBar</item>
-
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
     </style>
@@ -11,6 +10,9 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <!-- Customize your theme here. -->
     </style>
 
     <!-- Action bar theme -->
@@ -26,9 +28,5 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
-    <style name="menu_labels_style">
-        <item name="android:background">@drawable/fab_label_background</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
 
 </resources>

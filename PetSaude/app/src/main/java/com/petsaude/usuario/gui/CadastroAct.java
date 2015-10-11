@@ -2,11 +2,13 @@ package com.petsaude.usuario.gui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.petsaude.R;
@@ -42,7 +44,8 @@ public class CadastroAct extends Activity {
         final EditText nome = (EditText) findViewById(R.id.nome);
         final EditText confirmarSenha = (EditText) findViewById(R.id.confirmarSenha);
 
-        final Button registrar = (Button) findViewById(R.id.registrar);
+        final TextView registrar = (TextView) findViewById(R.id.registrar);
+        registrar.setPaintFlags(registrar.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
 
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override

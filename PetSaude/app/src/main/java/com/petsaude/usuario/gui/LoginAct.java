@@ -2,11 +2,13 @@ package com.petsaude.usuario.gui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.petsaude.R;
@@ -38,8 +40,12 @@ public class LoginAct extends Activity {
 
         final EditText login = (EditText) findViewById(R.id.login);
         final EditText senha = (EditText) findViewById(R.id.senha);
-        final Button entrar  = (Button) findViewById(R.id.entrar);
-        final Button registrar  = (Button) findViewById(R.id.registrar);
+        final TextView entrar  = (TextView) findViewById(R.id.entrar);
+        final TextView registrar  = (TextView) findViewById(R.id.registrar);
+
+        entrar.setPaintFlags(entrar.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+        registrar.setPaintFlags(registrar.getPaintFlags()|Paint.UNDERLINE_TEXT_FLAG);
+
 
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
