@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.petsaude.R;
+import com.petsaude.animal.gui.CadastroAnimal;
 import com.petsaude.usuario.dominio.Session;
 
 public class MenuActivity extends android.support.v7.app.AppCompatActivity {
@@ -58,7 +59,7 @@ public class MenuActivity extends android.support.v7.app.AppCompatActivity {
     // Declaring Your View and Variables
     Toolbar toolbar;
 
-    String TITLES1[] = {"Mapa","Contato","Sair"};
+    String TITLES1[] = {"Mapa","Cadastrar Animal","Sair"};
     int ICONS[] = {R.drawable.ic_action_galeria,R.drawable.ic_action_sobre,R.drawable.ic_action_sair};
 
     String NAME = Session.getUsuarioLogado().getLogin();
@@ -142,10 +143,10 @@ public class MenuActivity extends android.support.v7.app.AppCompatActivity {
                         startActivity(i);
                     }
                     else if (position == 2 ){
-                        Toast.makeText(MenuActivity.this,"Clicoou no ITEM 2",Toast.LENGTH_LONG).show();
-                        //Intent i = new Intent(MenuActivity.this,ContatoAct.class);
-                        //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        //startActivity(i);
+                        //Toast.makeText(MenuActivity.this,"Clicoou no ITEM 2",Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(MenuActivity.this,CadastroAnimal.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
                     }
                     else if (position ==3){
                         onQuit();

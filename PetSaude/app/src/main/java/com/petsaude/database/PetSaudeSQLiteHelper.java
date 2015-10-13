@@ -78,10 +78,77 @@ public class PetSaudeSQLiteHelper extends SQLiteOpenHelper  {
     }
 
 
+    /*
+    * Criação da tabela animal e suas colunas
+    * */
+
+    private static final String NOME_ANIMAL = "nome";
+    private static final String GENERO_ANIMAL = "genero";
+    private static final String RACA_ANIMAL = "raca";
+    private static final String DATA_NASC_ANIMAL = "data_nasc";
+    private static final String PESO_ANIMAL = "peso";
+    private static final String SEXO_ANIMAL = "sexo";
+    private static final String COR_ANIMAL = "cor";
+    private static final String ID_USUARIO_ANIMAL = "id_usuario_animal";
+    private static final String ID_ANIMAL = "_id";
+
+    private static final String TABLE_NAME_ANIMAL = "animal";
+
+    private static final String TABLE_DATABASE_ANIMAL_CREATE =
+            "create table animal (_id integer primary key autoincrement, " +
+                    "nome text not null, "+
+                    "genero text not null,"+
+                    "raca text not null, "+
+                    "data_nasc text not null" +
+                    "peso integer" +
+                    "sexo text not null" +
+                    "cor text" +
+                    "id_usuario_animal int not null" +
+                    "FOREIGN KEY(id_usuario_animal) REFERENCES usuario(_id));";
+
+    public static String getTableDatabaseAnimalCreate() {
+        return TABLE_DATABASE_ANIMAL_CREATE;
+    }
+    public static String getNomeAnimal(){
+        return NOME_ANIMAL;
+    }
+    public  static String getGeneroAnimal(){
+        return GENERO_ANIMAL;
+    }
+    public static String getRacaAnimal() {
+        return RACA_ANIMAL;
+    }
+    public static String getDataNascAnimal() {
+        return DATA_NASC_ANIMAL;
+    }
+    public static String getPesoAnimal(){
+        return PESO_ANIMAL;
+    }
+
+    public static String getSexoAnimal() {
+        return SEXO_ANIMAL;
+    }
+
+    public static String getCorAnimal() {
+        return COR_ANIMAL;
+    }
+
+    public static String getIdUsuarioAnimal() {return ID_USUARIO_ANIMAL;}
+
+    public static String getIdAnimal() {
+        return ID_ANIMAL;
+    }
+
+    public static String getTableNameAnimal() {
+        return TABLE_NAME_ANIMAL;
+    }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase dataBase) {
         dataBase.execSQL(getTableDatabaseUsuarioCreate());
+        dataBase.execSQL(getTableDatabaseAnimalCreate());
     }
 
     @Override
