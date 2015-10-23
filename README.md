@@ -1,2 +1,2 @@
-# Projeto
-Projeto de criação do serviço de agendamento para animais de estimações.
+# Android
+Repositório para os arquivos do Aplicativo PetSaúde
