@@ -84,11 +84,6 @@
         </activity>
 
         <activity
-            android:name=".animal.gui.ClinicaMap"
-            android:label="@string/title_activity_menu" >
-        </activity>
-
-        <activity
             android:name=".usuario.gui.SplashAct"
             android:label="@string/title_activity_menu" >
             <intent-filter>

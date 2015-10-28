@@ -14,6 +14,7 @@ import com.petsaude.R;
 import com.petsaude.animal.dominio.Animal;
 import com.petsaude.animal.negocio.AnimalService;
 import com.petsaude.usuario.dominio.Session;
+import com.petsaude.usuario.gui.MenuActivity;
 
 public class CadastroAnimal extends AppCompatActivity {
 
@@ -64,7 +65,7 @@ public class CadastroAnimal extends AppCompatActivity {
                     Toast.makeText(CadastroAnimal.this, "Animal cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
                     limpaDados(nome, dataNasc, cor, genero, raca, peso, sexo);
                     Intent i = new Intent();
-                    i.setClass(CadastroAnimal.this, ClinicaMap.class);
+                    i.setClass(CadastroAnimal.this, MenuActivity.class);
                     startActivity(i);
 
                 } catch (Exception e) {

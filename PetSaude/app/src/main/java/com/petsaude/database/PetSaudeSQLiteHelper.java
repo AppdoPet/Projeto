@@ -46,7 +46,6 @@ public class PetSaudeSQLiteHelper extends SQLiteOpenHelper  {
     private static final String SENHA_USUARIO = "senha";
     private static final String EMAIL_USUARIO = "email";
     private static final String ID_USUARIO = "_id";
-
     private static final String TABLE_NAME_USUARIO = "usuario";
 
     private static final String TABLE_DATABASE_USUARIO_CREATE =
@@ -91,7 +90,6 @@ public class PetSaudeSQLiteHelper extends SQLiteOpenHelper  {
     private static final String COR_ANIMAL = "cor";
     private static final String ID_USUARIO_ANIMAL = "id_usuario_animal";
     private static final String ID_ANIMAL = "_id";
-
     private static final String TABLE_NAME_ANIMAL = "animal";
 
     private static final String TABLE_DATABASE_ANIMAL_CREATE =
@@ -99,11 +97,11 @@ public class PetSaudeSQLiteHelper extends SQLiteOpenHelper  {
                     "nome text not null, "+
                     "genero text not null,"+
                     "raca text not null, "+
-                    "data_nasc text not null" +
-                    "peso integer" +
-                    "sexo text not null" +
-                    "cor text" +
-                    "id_usuario_animal int not null" +
+                    "data_nasc text not null," +
+                    "peso integer," +
+                    "sexo text not null," +
+                    "cor text," +
+                    "id_usuario_animal int not null," +
                     "FOREIGN KEY(id_usuario_animal) REFERENCES usuario(_id));";
 
     public static String getTableDatabaseAnimalCreate() {
@@ -124,21 +122,16 @@ public class PetSaudeSQLiteHelper extends SQLiteOpenHelper  {
     public static String getPesoAnimal(){
         return PESO_ANIMAL;
     }
-
     public static String getSexoAnimal() {
         return SEXO_ANIMAL;
     }
-
     public static String getCorAnimal() {
         return COR_ANIMAL;
     }
-
     public static String getIdUsuarioAnimal() {return ID_USUARIO_ANIMAL;}
-
     public static String getIdAnimal() {
         return ID_ANIMAL;
     }
-
     public static String getTableNameAnimal() {
         return TABLE_NAME_ANIMAL;
     }

@@ -44,10 +44,10 @@ public class ClinicaMapsActivity extends FragmentActivity {
     private void setUpMap() {
         mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
     }
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.map, menu);
+        getMenuInflater().inflate(R.menu.menu_menu, menu);
         return true;
-    }*/
+    }
 }
