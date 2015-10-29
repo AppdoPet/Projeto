@@ -2,12 +2,12 @@ package com.petsaude.usuario.negocio;
 
 import android.content.Context;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.petsaude.usuario.dominio.Session;
 import com.petsaude.usuario.dominio.Usuario;
 import com.petsaude.usuario.persistencia.UsuarioDAO;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -31,9 +31,9 @@ public class UsuarioService {
         if ( usuario != null) {
             Session.setUsuarioLogado(usuario);
             retorno = true;
-        } else if (login.length() <= 0) {message.append("Falta inserir o login de Login.");
-        } else if (senha.length() <= 0) {message.append("Falta inserir a senha.");
-        } else {message.append("Login ou Senha incorretos.");}
+        } else if (login.length() <= 0) {message.append("Insira o Usuário/Email.");
+        } else if (senha.length() <= 0) {message.append("Insira a Senha.");
+        } else {message.append("Usuário/Email ou Senha incorreto.");}
         if (message.length() > 0) {
             throw new Exception(message.toString());
         }
@@ -82,7 +82,7 @@ public class UsuarioService {
         StringBuilder message = new StringBuilder();
         boolean retorno = false;
         if (!senha.equals(Session.usuarioLogado.getSenha())){message.append("A senha está errada.");}
-        else if(!validarEmail(email)){message.append("Digite um Email valido.");}
+        else if(!validarEmail(email)){message.append("Insira um Email válido.");}
         if(message.length() > 0){throw new Exception(message.toString());}
         else{
             retorno = true;
@@ -99,7 +99,7 @@ public class UsuarioService {
             onDelete = true;
             Session.setUsuarioLogado(null);
         }else{
-            message.append("Desculpe, o usuário nao pôde ser Apagado.");
+            message.append("Ops! O usuário não pode ser excluído.");
             throw new Exception(message.toString());
         }
         return onDelete;

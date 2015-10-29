@@ -3,10 +3,7 @@ package com.petsaude.usuario.gui;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,8 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 import com.petsaude.R;
 import com.petsaude.animal.gui.CadastroAnimal;
@@ -30,9 +25,9 @@ public class MenuActivity extends android.support.v7.app.AppCompatActivity {
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MenuActivity.this);
 
         alertDialogBuilder.setTitle("Sair");
-        alertDialogBuilder.setMessage("Deseja sair do aplicativo ?");
+        alertDialogBuilder.setMessage("Deseja sair do aplicativo?");
 
-        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Session.setUsuarioLogado(null);
                 Intent i = new Intent(MenuActivity.this, LoginAct.class);
