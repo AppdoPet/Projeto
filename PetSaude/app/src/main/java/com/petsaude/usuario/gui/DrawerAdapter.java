@@ -55,7 +55,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
             // Here we set the appropriate view in accordance with the the view type as passed when the holder object is created
 
             if(ViewType == TYPE_ITEM) {
-                textView = (TextView) itemView.findViewById(R.id.rowText); // Creating TextView object with the id of textView from menu_item_row.xmlw.xml
+                //textView = (TextView) itemView.findViewById(R.id.rowText); // Creating TextView object with the id of textView from menu_item_row.xmlw.xml
                 imageView = (ImageView) itemView.findViewById(R.id.rowIcon);// Creating ImageView object with the id of ImageView from menu_item_row.xmlw.xml
                 Holderid = 1;                                               // setting holder id as 1 as the object being populated are of type item row
             }

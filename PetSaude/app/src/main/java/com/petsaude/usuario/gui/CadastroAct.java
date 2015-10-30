@@ -14,8 +14,8 @@ import com.petsaude.usuario.dominio.Usuario;
 import com.petsaude.usuario.negocio.UsuarioService;
 
 public class CadastroAct extends Activity {
-    final UsuarioService negocio = new UsuarioService(CadastroAct.this);
 
+    final UsuarioService negocio = new UsuarioService(CadastroAct.this);
 
     public void limpaDados(EditText login,EditText email,EditText nome,EditText senha,EditText confirmarSenha){
         login.setText("");
@@ -44,6 +44,7 @@ public class CadastroAct extends Activity {
         final EditText confirmarSenha = (EditText) findViewById(R.id.confirmarSenha);
 
         final Button registrar = (Button) findViewById(R.id.registrar);
+        final Button entrar = (Button) findViewById(R.id.entrar);
 
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +67,15 @@ public class CadastroAct extends Activity {
                 } catch (Exception e) {
                     Toast.makeText(CadastroAct.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        entrar.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                limpaDados(login, email, senha, nome, confirmarSenha);
+                Intent j = new Intent();
+                j.setClass(CadastroAct.this,LoginAct.class);
+                startActivity(j);
             }
         });
     }

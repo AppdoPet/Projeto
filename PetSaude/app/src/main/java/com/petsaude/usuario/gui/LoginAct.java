@@ -35,7 +35,6 @@ public class LoginAct extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
 
-
         final EditText login = (EditText) findViewById(R.id.login);
         final EditText senha = (EditText) findViewById(R.id.senha);
         final Button entrar = (Button) findViewById(R.id.entrar);
