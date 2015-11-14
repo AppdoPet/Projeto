@@ -1,6 +1,8 @@
 package com.petsaude.usuario.dominio;
 
 
+import java.util.Date;
+
 /**
  * Created by Uehara on 07/10/2015.
  */

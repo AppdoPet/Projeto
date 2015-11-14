@@ -1,6 +1,6 @@
 package com.petsaude.usuario.negocio;
 
-import android.content.Context;
+import android.util.Log;
 
 import com.petsaude.usuario.dominio.Session;
 import com.petsaude.usuario.dominio.Usuario;
@@ -17,9 +17,8 @@ public class UsuarioService {
 
     private UsuarioDAO usuarioDAO = null;
 
-    public UsuarioService(Context context){
+    public UsuarioService(){
         this.usuarioDAO = UsuarioDAO.getInstance();
-        this.usuarioDAO.setContextUp(context);
     }
 
     public boolean login(String login , String senha) throws Exception {
@@ -27,16 +26,21 @@ public class UsuarioService {
         boolean retorno = false;
 
         Usuario usuario = usuarioDAO.login(login, senha);
+            if (usuario != null) {
+                Session.setUsuarioLogado(usuario);
+                Log.d("EMAIL DO USUARIO : ", usuario.getEmail());
+                retorno = true;
+            } else if (login.length() <= 0) {
+                message.append("Insira o Usuário/Email.");
+            } else if (senha.length() <= 0) {
+                message.append("Insira a Senha.");
+            } else {
+                message.append("Usuário/Email ou Senha incorreto.");
+            }
+            if (message.length() > 0) {
+                throw new Exception(message.toString());
+            }
 
-        if ( usuario != null) {
-            Session.setUsuarioLogado(usuario);
-            retorno = true;
-        } else if (login.length() <= 0) {message.append("Insira o Usuário/Email.");
-        } else if (senha.length() <= 0) {message.append("Insira a Senha.");
-        } else {message.append("Usuário/Email ou Senha incorreto.");}
-        if (message.length() > 0) {
-            throw new Exception(message.toString());
-        }
         return retorno;
     }
 

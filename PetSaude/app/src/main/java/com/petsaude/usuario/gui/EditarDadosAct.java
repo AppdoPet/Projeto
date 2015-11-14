@@ -19,7 +19,7 @@ import com.petsaude.usuario.negocio.UsuarioService;
  */
 public class EditarDadosAct extends Activity {
 
-    final UsuarioService negocio = new UsuarioService(EditarDadosAct.this);
+    final UsuarioService negocio = new UsuarioService();
 
     public void onBackPressed(){
         Intent intent = new Intent();

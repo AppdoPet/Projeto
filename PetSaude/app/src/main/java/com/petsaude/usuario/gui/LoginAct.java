@@ -2,7 +2,9 @@ package com.petsaude.usuario.gui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,7 +17,7 @@ import com.petsaude.usuario.negocio.UsuarioService;
 
 public class LoginAct extends Activity {
 
-    final UsuarioService negocio = new UsuarioService(LoginAct.this);
+    final UsuarioService negocio = new UsuarioService();
 
     public void limpaDados(EditText login,EditText senha){
         login.setText("");
@@ -33,6 +35,11 @@ public class LoginAct extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if(android.os.Build.VERSION.SDK_INT>9){
+            StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+        }
         setContentView(R.layout.activity_login);
 
         final EditText login = (EditText) findViewById(R.id.login);
@@ -45,14 +52,15 @@ public class LoginAct extends Activity {
             @Override
             public void onClick(View v) {
                 try {
-                    if (negocio.login(login.getText().toString(),senha.getText().toString()) == true){
+                    if (negocio.login(login.getText().toString(), senha.getText().toString()) ==true) {
                         Toast.makeText(LoginAct.this, "Logado com sucesso.", Toast.LENGTH_SHORT).show();
-                        limpaDados(login,senha);
+                        limpaDados(login, senha);
                         Intent i = new Intent();
-                        i.setClass(LoginAct.this,MenuActivity.class);
+                        i.setClass(LoginAct.this, MenuActivity.class);
                         startActivity(i);
-                    };
-                }catch (Exception e) {
+                    }
+                    ;
+                } catch (Exception e) {
                     Toast.makeText(LoginAct.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
@@ -60,11 +68,11 @@ public class LoginAct extends Activity {
             }
         });
 
-        registrar.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                limpaDados(login,senha);
+        registrar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                limpaDados(login, senha);
                 Intent j = new Intent();
-                j.setClass(LoginAct.this,CadastroAct.class);
+                j.setClass(LoginAct.this, CadastroAct.class);
                 startActivity(j);
             }
         });

@@ -15,7 +15,7 @@ import com.petsaude.usuario.dominio.Session;
 import com.petsaude.usuario.negocio.UsuarioService;
 
 public class EditarEmailAct extends Activity {
-    final UsuarioService negocio = new UsuarioService(EditarEmailAct.this);
+    final UsuarioService negocio = new UsuarioService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
