@@ -1,7 +1,10 @@
 package com.petsaude.usuario.persistencia;
 
+import android.database.Cursor;
 import android.util.Log;
 
+import com.petsaude.database.DAO;
+import com.petsaude.database.PetSaudeSQLiteHelper;
 import com.petsaude.usuario.dominio.Usuario;
 
 import org.ksoap2.SoapEnvelope;
@@ -10,7 +13,8 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-public class UsuarioDAO {
+public class UsuarioDAO extends DAO {
+
     private static final UsuarioDAO instance = new UsuarioDAO();
     private UsuarioDAO(){
         super();
@@ -22,9 +26,6 @@ public class UsuarioDAO {
     private static final String NAMESPACE="http://service.usuario.petsaude.com.br";
     private static final String LOGIN="login";
 
-
-
-    //Método de Login....
     public boolean existeUsuario(Usuario usuario){
         return false;
     }
@@ -43,6 +44,7 @@ public class UsuarioDAO {
     public void alterarSenha(String senha){
 
     }
+
     public Usuario login(String login, String senha) throws Exception {
         Log.d("EMAIL ", login);
         Usuario usr = null; // Cria um objeto para receber as respostas...
@@ -92,4 +94,5 @@ public class UsuarioDAO {
         }
         return usr; // Se não der nenhum erro, retorna o objeto.
     }
+
 }

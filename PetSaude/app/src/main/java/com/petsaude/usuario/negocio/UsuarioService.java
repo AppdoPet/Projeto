@@ -2,10 +2,14 @@ package com.petsaude.usuario.negocio;
 
 import android.util.Log;
 
+import com.petsaude.animal.persistencia.AnimalDAO;
+import com.petsaude.clinica.dominio.Clinica;
+import com.petsaude.clinica.persistencia.ClinicaDAO;
 import com.petsaude.usuario.dominio.Session;
 import com.petsaude.usuario.dominio.Usuario;
 import com.petsaude.usuario.persistencia.UsuarioDAO;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +20,9 @@ import java.util.regex.Pattern;
 public class UsuarioService {
 
     private UsuarioDAO usuarioDAO = null;
+    private ClinicaDAO clinicaDAO = ClinicaDAO.getInstance();
+    private AnimalDAO animalDAO = AnimalDAO.getInstance();
+
 
     public UsuarioService(){
         this.usuarioDAO = UsuarioDAO.getInstance();
@@ -41,6 +48,21 @@ public class UsuarioService {
                 throw new Exception(message.toString());
             }
 
+        if ( usuario != null) {
+            Session.setUsuarioLogado(usuario);
+            /*ArrayList<Clinica> teste = new ArrayList<Clinica>();
+            teste.add(new Clinica(1, -8.195558, -34.920701));
+            teste.add(new Clinica(2, -8.2182517,-34.9324858));
+            Session.setListaClinicas(teste);*/
+            clinicaDAO.retrieveClinicas();
+            animalDAO.retrieveAnimais(usuario);
+            retorno = true;
+        } else if (login.length() <= 0) {message.append("Insira o Usuário ou Email.");
+        } else if (senha.length() <= 0) {message.append("Insira a Senha.");
+        } else {message.append("Usuário/Email ou Senha incorreto.");}
+        if (message.length() > 0) {
+            throw new Exception(message.toString());
+        }
         return retorno;
     }
 

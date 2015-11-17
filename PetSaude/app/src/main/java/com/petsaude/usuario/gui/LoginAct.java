@@ -62,7 +62,6 @@ public class LoginAct extends Activity {
                     ;
                 } catch (Exception e) {
                     Toast.makeText(LoginAct.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
                 }
                 login.requestFocus();
             }

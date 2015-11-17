@@ -8,12 +8,10 @@ public class Animal {
     private int id;
     private int usuario;
     private String nome;
-    private String genero;
     private String raca;
     private String dataNasc;
     private int peso;
-    private String sexo;
-    private String cor;
+
 
 
     public String getNome() {
@@ -25,13 +23,6 @@ public class Animal {
     }
 
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 
     public String getRaca() {
         return raca;
@@ -55,22 +46,6 @@ public class Animal {
 
     public void setPeso(int peso) {
         this.peso = peso;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
     }
 
     public int getId() {

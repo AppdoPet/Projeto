@@ -32,18 +32,6 @@
     <string name="title_activity_galeria">Galeria de Cifras</string>
     <string name="title_activity_clinica_maps">Mapa de Clinicas</string>
 
-    <string name="genero_prompt">Gênero</string>
-
-    <string-array name="genero_array">
-        <item> - </item>
-        <item>Canino</item>
-        <item>Felino</item>
-        <item>Roedor</item>
-        <item>Ave</item>
-        <item>Roedor</item>
-        <item>Coelho</item>
-    </string-array>
-
     <string name="raca_prompt">Raça</string>
 
     <string-array name="raca_array">
@@ -54,22 +42,8 @@
         <item>Chihuahua</item>
     </string-array>
 
-    <string name="sexo_prompt">Sexo</string>
 
-    <string-array name="sexo_array">
-        <item> - </item>
-        <item>Macho</item>
-        <item>Fêmea</item>
-    </string-array>
-
-    <string name="cor_prompt">Cor</string>
-
-    <string-array name="cor_array">
-        <item> - </item>
-        <item>Branco</item>
-        <item>Preto</item>
-        <item>Marrom</item>
-        <item>Dourado</item>
-    </string-array>
+    <string name="title_activity_clinica_detalhe">ClinicaDetalhe</string>
+    <string name="title_activity_perfil">PerfilAct</string>
 
 </resources>

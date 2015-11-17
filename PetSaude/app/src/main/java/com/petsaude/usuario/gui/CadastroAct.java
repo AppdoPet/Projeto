@@ -44,7 +44,7 @@ public class CadastroAct extends Activity {
         final EditText confirmarSenha = (EditText) findViewById(R.id.confirmarSenha);
 
         final Button registrar = (Button) findViewById(R.id.registrar);
-        final Button entrar = (Button) findViewById(R.id.entrar);
+        final Button entrar = (Button) findViewById(R.id.voltar);
 
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override

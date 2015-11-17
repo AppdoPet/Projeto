@@ -1,5 +1,6 @@
 package com.petsaude.usuario.gui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.petsaude.R;
 import com.petsaude.usuario.negocio.UsuarioService;
+
 
 
 public class EditarSenhaAct extends ActionBarActivity {

@@ -5,13 +5,12 @@
     android:background="@drawable/login_launcher">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_gravity="center"
-        android:id="@+id/linearlayout">
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
@@ -129,8 +128,8 @@
                     <Button
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
-                        android:text="Entrar"
-                        android:id="@+id/entrar"
+                        android:text="Voltar"
+                        android:id="@+id/voltar"
                         android:backgroundTint="#f7f1f1"
                         android:textColor="#d6f13d37"
                         android:layout_gravity="left" />

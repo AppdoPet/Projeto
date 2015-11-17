@@ -1,8 +1,11 @@
 package com.petsaude.usuario.dominio;
 
 import android.content.Context;
+
+import com.petsaude.clinica.dominio.Clinica;
 import com.petsaude.usuario.dominio.Usuario;
 
+import java.util.ArrayList;
 
 
 /**
@@ -12,6 +15,26 @@ import com.petsaude.usuario.dominio.Usuario;
 public class Session {
 
     public static Usuario usuarioLogado;
+
+    public static Clinica ClinicaSelecionada;
+
+    private static ArrayList<Clinica> listaClinicas;
+
+    public static ArrayList<Clinica> getListaClinicas() {
+        return listaClinicas;
+    }
+
+    public static Clinica getClinicaSelecionada() {
+        return ClinicaSelecionada;
+    }
+
+    public static void setClinicaSelecionada(Clinica clinicaSelecionada) {
+        ClinicaSelecionada = clinicaSelecionada;
+    }
+
+    public static void setListaClinicas(ArrayList<Clinica> listaClinica) {
+        listaClinicas = listaClinica;
+    }
 
     private static Context contexto = null;
 
