@@ -53,7 +53,8 @@ public class PetSaudeSQLiteHelper extends SQLiteOpenHelper  {
                     "login text not null, "+
                     "nome text not null,"+
                     "senha text not null, "+
-                    "email text not null);";
+                    "email text not null," +
+                    "CRMV integer);";
 
     public static String getTableDatabaseUsuarioCreate() {
         return TABLE_DATABASE_USUARIO_CREATE;
@@ -140,12 +141,29 @@ public class PetSaudeSQLiteHelper extends SQLiteOpenHelper  {
 
 
 
+    private static final String TABLE_DATABASE_VAGA_CREATE =
+            "create table vaga (_id integer primary key autoincrement, " +
+                    "id_clinica integer not null, "+
+                    "id_usuario integer, "+
+                    "id_animal integer, "+
+                    "id_medico integer not null," +
+                    "data String not null," +
+                    "status String not null);";
+
     @Override
     public void onCreate(SQLiteDatabase dataBase) {
         dataBase.execSQL(getTableDatabaseUsuarioCreate());
         dataBase.execSQL(getTableDatabaseAnimalCreate());
         dataBase.execSQL(getTableDatabaseClinicaCreate());
+        dataBase.execSQL(TABLE_DATABASE_VAGA_CREATE);
         dataBase.execSQL("insert into usuario (login,nome,senha,email) values ('math','math','math','math@math.com')");
+
+        dataBase.execSQL("insert into usuario (login,nome,senha,email,CRMV) values ('matheus','Dr Uehara','math','mattth@math.com',1234)");
+        dataBase.execSQL("insert into usuario (login,nome,senha,email,CRMV) values ('mathieus','Dr matheus','math','maasdth@math.com',123456)");
+
+        dataBase.execSQL("insert into vaga(id_clinica,id_medico,data,status) values (2,2,'16/10/2015 12:00 as 13:00','DISPONIVEL')");
+        dataBase.execSQL("insert into vaga(id_clinica,id_medico,data,status) values (2,3,'16/10/2015 14:00 as 14:40','DISPONIVEL')");
+
         dataBase.execSQL("insert into clinica (nome,endereco,latitude,longitude) values " +
                 "('Pet Dream Clinica veterinária','rua das ruas',-8.191706,-34.924004)," +
                 "('Amigo Bixo','rua das ruas',-8.195558,-34.920701)," +

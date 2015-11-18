@@ -35,6 +35,7 @@ import com.petsaude.clinica.gui.ClinicaDetalhe;
 import com.petsaude.clinica.negocio.ClinicaService;
 import com.petsaude.usuario.dominio.Session;
 import com.petsaude.usuario.negocio.UsuarioService;
+import com.petsaude.vaga.negocio.VagaService;
 
 public class MenuActivity extends android.support.v7.app.AppCompatActivity {
 
@@ -76,6 +77,8 @@ public class MenuActivity extends android.support.v7.app.AppCompatActivity {
     private MarkerOptions personMarker;
 
     final ClinicaService negocio = new ClinicaService(MenuActivity.this);
+    final VagaService vagaNegocio = new VagaService(MenuActivity.this);
+
 
 
     String TITLES1[] = {"Meu Perfil","Cadastrar Animal","Sair"};
@@ -241,6 +244,7 @@ public class MenuActivity extends android.support.v7.app.AppCompatActivity {
             @Override public boolean onMarkerClick(Marker marker) {
             int id = new Integer(marker.getSnippet());
             Session.setClinicaSelecionada(negocio.getClinica(id));
+            Session.getClinicaSelecionada().setVagas(vagaNegocio.getVagas(Session.getClinicaSelecionada()));
             Intent i = new Intent(MenuActivity.this, ClinicaDetalhe.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);

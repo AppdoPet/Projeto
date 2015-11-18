@@ -1,11 +1,15 @@
 package com.petsaude.clinica.dominio;
 
+import com.petsaude.medico.dominio.Medico;
+import com.petsaude.vaga.dominio.Vaga;
+
 import java.util.ArrayList;
 
 /**
  * Created by Matheus Uehara on 10/11/2015.
  */
 public class Clinica {
+
     private int id;
     private String nome;
     private String endereco;
@@ -13,6 +17,24 @@ public class Clinica {
     private Double longitude;
     private String numero;
     private int cnpj;
+    private ArrayList<Vaga> vagas;
+    private ArrayList<Medico> medicos;
+
+    public ArrayList<Vaga> getVagas() {
+        return vagas;
+    }
+
+    public void setVagas(ArrayList<Vaga> vagas) {
+        this.vagas = vagas;
+    }
+
+    public ArrayList<Medico> getMedicos() {
+        return medicos;
+    }
+
+    public void setMedicos(ArrayList<Medico> medicos) {
+        this.medicos = medicos;
+    }
 
     public String getNumero() {
         return numero;
