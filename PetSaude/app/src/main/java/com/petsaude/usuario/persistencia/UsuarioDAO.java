@@ -1,17 +1,22 @@
 package com.petsaude.usuario.persistencia;
 
-import android.database.Cursor;
+
 import android.util.Log;
-
 import com.petsaude.database.DAO;
-import com.petsaude.database.PetSaudeSQLiteHelper;
 import com.petsaude.usuario.dominio.Usuario;
-
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+
+import android.content.ContentValues;
+import android.util.Log;
+import android.database.Cursor;
+import com.petsaude.database.PetSaudeSQLiteHelper;
+import com.petsaude.database.DAO;
+import com.petsaude.usuario.dominio.Session;
+
 
 public class UsuarioDAO extends DAO {
 
@@ -26,9 +31,14 @@ public class UsuarioDAO extends DAO {
     private static final String NAMESPACE="http://service.usuario.petsaude.com.br";
     private static final String LOGIN="login";
 
+    private static PetSaudeSQLiteHelper database = getDataBaseHelper();
+
+    /*
     public boolean existeUsuario(Usuario usuario){
         return false;
     }
+
+    */
     public boolean existeEmail(Usuario usuario){
         return false;
     }
@@ -45,6 +55,37 @@ public class UsuarioDAO extends DAO {
 
     }
 
+    public Usuario login(String login, String senha){
+                Usuario condition = null;
+                open();
+                Cursor mCursor = getDatabase().rawQuery("SELECT * FROM " + database.getTableNameUsuario() + " WHERE login=? AND senha=?", new String[]{login,senha});
+                if (((mCursor != null) && (mCursor.getCount() > 0))) {
+                        mCursor.moveToFirst();
+                        Usuario novoUsuario = new Usuario();
+                        novoUsuario.setID(mCursor.getInt(mCursor.getColumnIndex(database.getIdUsuario())));
+                        novoUsuario.setLogin(mCursor.getString(mCursor.getColumnIndex(database.getLogin())));
+                        novoUsuario.setNome(mCursor.getString(mCursor.getColumnIndex(database.getNomeUsuario())));
+                        novoUsuario.setEmail(mCursor.getString(mCursor.getColumnIndex(database.getEmail())));
+                        novoUsuario.setSenha(mCursor.getString(mCursor.getColumnIndex(database.getSenha())));
+                        condition = novoUsuario;
+                        close();
+                }
+                return condition;
+            }
+
+    public boolean existeUsuario(Usuario usuario){
+                boolean condition = false;
+                open();
+                Cursor mCursor = getDatabase().rawQuery("SELECT * FROM " + database.getTableNameUsuario() + " WHERE login=?", new String[]{(usuario.getLogin())});
+                if (mCursor != null) {
+                        if (mCursor.getCount() > 0) {
+                                condition = true;
+                            }
+                   }
+                close();
+                return condition;
+    }
+/*
     public Usuario login(String login, String senha) throws Exception {
         Log.d("EMAIL ", login);
         Usuario usr = null; // Cria um objeto para receber as respostas...
@@ -94,5 +135,5 @@ public class UsuarioDAO extends DAO {
         }
         return usr; // Se não der nenhum erro, retorna o objeto.
     }
-
+*/
 }

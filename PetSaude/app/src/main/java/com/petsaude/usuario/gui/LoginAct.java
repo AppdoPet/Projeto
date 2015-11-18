@@ -17,7 +17,7 @@ import com.petsaude.usuario.negocio.UsuarioService;
 
 public class LoginAct extends Activity {
 
-    final UsuarioService negocio = new UsuarioService();
+    final UsuarioService negocio = new UsuarioService(LoginAct.this);
 
     public void limpaDados(EditText login,EditText senha){
         login.setText("");

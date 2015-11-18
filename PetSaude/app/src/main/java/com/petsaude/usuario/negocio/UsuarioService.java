@@ -1,5 +1,6 @@
 package com.petsaude.usuario.negocio;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.petsaude.animal.persistencia.AnimalDAO;
@@ -24,10 +25,31 @@ public class UsuarioService {
     private AnimalDAO animalDAO = AnimalDAO.getInstance();
 
 
-    public UsuarioService(){
+    public UsuarioService(Context context){
         this.usuarioDAO = UsuarioDAO.getInstance();
+        this.usuarioDAO.setContextUp(context);
     }
 
+
+    public boolean login(String login , String senha) throws Exception {
+        StringBuilder message = new StringBuilder();
+        boolean retorno = false;
+        Usuario usuario = usuarioDAO.login(login, senha);
+        if ( usuario != null) {
+            Session.setUsuarioLogado(usuario);
+            clinicaDAO.retrieveClinicas();
+            animalDAO.retrieveAnimais(usuario);
+            retorno = true;
+        } else if (login.length() <= 0) {message.append("Insira o Usuário/Email.");
+        } else if (senha.length() <= 0) {message.append("Insira a Senha.");
+        } else {message.append("Usuário/Email ou Senha incorreto.");}
+        if (message.length() > 0) {
+           throw new Exception(message.toString());
+        }
+    return retorno;
+    }
+
+/*
     public boolean login(String login , String senha) throws Exception {
         StringBuilder message = new StringBuilder();
         boolean retorno = false;
@@ -50,10 +72,6 @@ public class UsuarioService {
 
         if ( usuario != null) {
             Session.setUsuarioLogado(usuario);
-            /*ArrayList<Clinica> teste = new ArrayList<Clinica>();
-            teste.add(new Clinica(1, -8.195558, -34.920701));
-            teste.add(new Clinica(2, -8.2182517,-34.9324858));
-            Session.setListaClinicas(teste);*/
             clinicaDAO.retrieveClinicas();
             animalDAO.retrieveAnimais(usuario);
             retorno = true;
@@ -65,6 +83,7 @@ public class UsuarioService {
         }
         return retorno;
     }
+*/
 
     public void adicionar(Usuario usuario,String confirmarSenha) throws Exception {
         StringBuilder message = new StringBuilder();

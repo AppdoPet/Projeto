@@ -18,15 +18,7 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="12dp"
-                android:paddingTop="4dp"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="PetSaude"
-                android:id="@+id/rowText" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +33,7 @@
                 android:paddingTop="4dp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="EXXAMPLEEEEEEEEEEEEE"
+                android:text="PetSaude"
                 android:id="@+id/rowText" />
 
         </LinearLayout>

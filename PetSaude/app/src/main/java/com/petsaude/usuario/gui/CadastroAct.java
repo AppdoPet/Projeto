@@ -15,7 +15,7 @@ import com.petsaude.usuario.negocio.UsuarioService;
 
 public class CadastroAct extends Activity {
 
-    final UsuarioService negocio = new UsuarioService();
+    final UsuarioService negocio = new UsuarioService(CadastroAct.this);
 
     public void limpaDados(EditText login,EditText email,EditText nome,EditText senha,EditText confirmarSenha){
         login.setText("");

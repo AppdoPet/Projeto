@@ -164,7 +164,6 @@ public class MenuActivity extends android.support.v7.app.AppCompatActivity {
                     int position = recyclerView.getChildAdapterPosition(child);
 
                     if (position == 1){
-                        //Toast.makeText(MenuActivity.this, "Clicou no perfil", Toast.LENGTH_LONG).show();
                         Intent i = new Intent(MenuActivity.this,PerfilAct.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(i);

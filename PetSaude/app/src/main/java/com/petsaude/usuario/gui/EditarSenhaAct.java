@@ -15,8 +15,8 @@ import com.petsaude.usuario.negocio.UsuarioService;
 
 
 
-public class EditarSenhaAct extends ActionBarActivity {
-    final UsuarioService negocio = new UsuarioService();
+public class EditarSenhaAct extends Activity {
+    final UsuarioService negocio = new UsuarioService(EditarSenhaAct.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

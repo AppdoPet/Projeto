@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class PerfilAct extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    final UsuarioService negocio = new UsuarioService();
+    final UsuarioService negocio = new UsuarioService(PerfilAct.this);
 
     private ListView listView;
     private AdapterAnimal adapterListView;
