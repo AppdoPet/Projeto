@@ -1,5 +1,6 @@
 package com.petsaude.usuario.gui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,8 +14,9 @@ import com.petsaude.R;
 import com.petsaude.usuario.negocio.UsuarioService;
 
 
-public class EditarSenhaAct extends ActionBarActivity {
-    final UsuarioService negocio = new UsuarioService();
+
+public class EditarSenhaAct extends Activity {
+    final UsuarioService negocio = new UsuarioService(EditarSenhaAct.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

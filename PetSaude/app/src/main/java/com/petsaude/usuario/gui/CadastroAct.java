@@ -15,7 +15,7 @@ import com.petsaude.usuario.negocio.UsuarioService;
 
 public class CadastroAct extends Activity {
 
-    final UsuarioService negocio = new UsuarioService();
+    final UsuarioService negocio = new UsuarioService(CadastroAct.this);
 
     public void limpaDados(EditText login,EditText email,EditText nome,EditText senha,EditText confirmarSenha){
         login.setText("");
@@ -44,7 +44,7 @@ public class CadastroAct extends Activity {
         final EditText confirmarSenha = (EditText) findViewById(R.id.confirmarSenha);
 
         final Button registrar = (Button) findViewById(R.id.registrar);
-        final Button entrar = (Button) findViewById(R.id.entrar);
+        final Button entrar = (Button) findViewById(R.id.voltar);
 
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override

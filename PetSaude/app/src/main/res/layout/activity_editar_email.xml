@@ -61,8 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/salvar"
-            android:textColor="#ffffffff"
-            android:background="@drawable/ic_launcher_salvar"
+            android:text="Salvar"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp" />
     </LinearLayout>

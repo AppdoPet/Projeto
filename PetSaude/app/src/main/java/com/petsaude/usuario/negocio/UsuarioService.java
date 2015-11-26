@@ -1,11 +1,20 @@
 package com.petsaude.usuario.negocio;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.petsaude.animal.persistencia.AnimalDAO;
+import com.petsaude.clinica.dominio.Clinica;
+import com.petsaude.clinica.persistencia.ClinicaDAO;
+import com.petsaude.medico.dominio.Medico;
+import com.petsaude.medico.persistencia.MedicoDAO;
 import com.petsaude.usuario.dominio.Session;
 import com.petsaude.usuario.dominio.Usuario;
 import com.petsaude.usuario.persistencia.UsuarioDAO;
+import com.petsaude.vaga.dominio.Vaga;
+import com.petsaude.vaga.persistencia.VagaDAO;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,32 +25,48 @@ import java.util.regex.Pattern;
 public class UsuarioService {
 
     private UsuarioDAO usuarioDAO = null;
+    private ClinicaDAO clinicaDAO = ClinicaDAO.getInstance();
+    private AnimalDAO animalDAO = AnimalDAO.getInstance();
+    private MedicoDAO medicoDAO = MedicoDAO.getInstance();
+    private VagaDAO vagaDAO = VagaDAO.getInstance();
 
-    public UsuarioService(){
+    public UsuarioService(Context context){
         this.usuarioDAO = UsuarioDAO.getInstance();
+        this.usuarioDAO.setContextUp(context);
     }
+
 
     public boolean login(String login , String senha) throws Exception {
         StringBuilder message = new StringBuilder();
         boolean retorno = false;
-
         Usuario usuario = usuarioDAO.login(login, senha);
-            if (usuario != null) {
-                Session.setUsuarioLogado(usuario);
-                Log.d("EMAIL DO USUARIO : ", usuario.getEmail());
-                retorno = true;
-            } else if (login.length() <= 0) {
-                message.append("Insira o Usuário/Email.");
-            } else if (senha.length() <= 0) {
-                message.append("Insira a Senha.");
-            } else {
-                message.append("Usuário/Email ou Senha incorreto.");
-            }
-            if (message.length() > 0) {
-                throw new Exception(message.toString());
-            }
+        Medico medico = medicoDAO.login(login, senha);
+        if ( usuario != null) {
+            Session.setUsuarioLogado(usuario);
+            clinicaDAO.retrieveClinicas();
+            animalDAO.retrieveAnimais(usuario);
+            vagaDAO.retrieveVagas(usuario);
+            retorno = true;
+        }else if(medico != null) {
+            Session.setMedicoLogado(medico);
+            vagaDAO.retrieveVagas(medico);
+            retorno = true;
+        }
+        else if (login.length() <= 0) {message.append("Insira o Usuário/Email.");
+        } else if (senha.length() <= 0) {message.append("Insira a Senha.");
+        } else {message.append("Usuário/Email ou Senha incorreto.");}
+        if (message.length() > 0) {
+           throw new Exception(message.toString());
+        }
+    return retorno;
+    }
 
-        return retorno;
+    public void atualizaClinica(Usuario usuario){
+        vagaDAO.retrieveVagas(usuario);
+    }
+
+    public void atualizaClinica(Medico usuario){
+        vagaDAO.retrieveVagas(usuario);
     }
 
     public void adicionar(Usuario usuario,String confirmarSenha) throws Exception {

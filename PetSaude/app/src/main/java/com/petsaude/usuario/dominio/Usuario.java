@@ -1,6 +1,12 @@
 package com.petsaude.usuario.dominio;
 
 
+import com.petsaude.animal.dominio.Animal;
+import com.petsaude.clinica.dominio.Clinica;
+import com.petsaude.vaga.dominio.Vaga;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,8 +19,34 @@ public class Usuario {
     private String email;
     private String nome;
     private String senha;
+    private ArrayList<Animal> listaAnimais;
+    private ArrayList<Vaga> listaConsultas;
 
     public Usuario(){}
+
+    public ArrayList<Vaga> getListaConsultas() {
+        return listaConsultas;
+    }
+
+    public void setListaConsultas(ArrayList<Vaga> listaConsultas) {
+        this.listaConsultas = listaConsultas;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<Animal> getListaAnimais() {
+        return listaAnimais;
+    }
+
+    public void setListaAnimais(ArrayList<Animal> listaAnimais) {
+        this.listaAnimais = listaAnimais;
+    }
 
     public String getEmail(){
         return this.email;

@@ -18,6 +18,14 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowIcon"
+                android:paddingLeft="16dp"
+                android:src="@drawable/ic_launcher"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,12 +35,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="PetSaude"
                 android:id="@+id/rowText" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rowIcon"
-                android:paddingLeft="16dp"
-                android:src="@drawable/ic_launcher"/>
 
         </LinearLayout>
     </RelativeLayout>

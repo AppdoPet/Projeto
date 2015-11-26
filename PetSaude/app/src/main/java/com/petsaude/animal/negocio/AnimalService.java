@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import com.petsaude.animal.dominio.Animal;
 import com.petsaude.animal.persistencia.AnimalDAO;
+import com.petsaude.usuario.dominio.Session;
 
 /**
  * Created by alessondelmiro on 11/10/15.
@@ -20,21 +21,27 @@ public class AnimalService {
         this.animalDAO.setContextUp(context);
     }
 
-
     public void adicionar(Animal animal) throws Exception {
         StringBuilder message = new StringBuilder();
 
-        if(!animalDAO.existeAnimal(animal)){
+        if(animalDAO.existeAnimal(animal)){
             message.append("Você já possui um animal cadastrado com esse nome.");}
         if(message.length() > 0){throw new Exception(
                 message.toString());}
         else {
             animalDAO.adicionarAnimal(animal);
+            animalDAO.retrieveAnimais(Session.getUsuarioLogado());
         }
-
     }
 
-
+    public Animal getAnimal(int id){
+        Animal animal = animalDAO.getAnimal(id);
+        if ( animal != null){
+            return animal;
+        }else{
+            return null;
+        }
+    };
 
 
     public boolean validarNome(String nome) {
@@ -49,4 +56,5 @@ public class AnimalService {
         }
         return validadeNome;
     }
+
 }
